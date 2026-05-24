@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SM Bygg &amp; Måleri — Kvalitet och hantverk från Vetlanda</title>
+  <meta name="description" content="Vi är ett erfaret team som levererar allt från takbyten till renovering och måleri – med hantverksstolthet och nöjda kunder som resultat." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SM Bygg &amp; Måleri" />
+  <meta property="og:description" content="Vi är ett erfaret team som levererar allt från takbyten till renovering och måleri – med hantverksstolthet och nöjda kunder som resultat." />
+  <meta property="og:type" content="website" />
+
+  <!-- Tailwind CSS via CDN — zero build step required -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Manrope', 'ui-sans-serif', 'system-ui'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /*
+     * INDUSTRY-TRADES TEMPLATE
+     * Personality: bold, workmanlike, high contrast. Trust signals lead.
+     * Distinct from the default template: heavier section dividers, sharper
+     * radii, more aggressive hero overlay, prominent stats bar.
+     */
+    :root {
+      --clr-accent:      #10b981;
+      --clr-accent-dark: #059669;
+      --clr-accent-light:#ecfdf5;
+    }
+
+    .btn-primary {
+      background-color: var(--clr-accent);
+      color: #ffffff;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      /* Square-ish corners reinforce the "tools, not boutique" feel */
+      border-radius: 4px !important;
+    }
+    .btn-primary:hover {
+      background-color: var(--clr-accent-dark);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      border-color: var(--clr-accent);
+      color: var(--clr-accent);
+      transition: all 0.2s ease;
+      border-radius: 4px !important;
+    }
+    .btn-outline:hover {
+      background-color: var(--clr-accent);
+      color: #ffffff;
+    }
+    .text-accent      { color: var(--clr-accent); }
+    .bg-accent        { background-color: var(--clr-accent); }
+    .bg-accent-light  { background-color: var(--clr-accent-light); }
+    .border-accent    { border-color: var(--clr-accent); }
+    .ring-accent      { --tw-ring-color: var(--clr-accent); }
+
+    [id] { scroll-margin-top: 80px; }
+
+    .fade-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .fade-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; opacity: 0; }
+    .animate-delay-1 { animation-delay: 0.15s; }
+    .animate-delay-2 { animation-delay: 0.30s; }
+
+    .gallery-item img { transition: transform 0.6s ease; }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* Trades-specific: stronger top border under hero for visual punch */
+    .trades-divider {
+      border-top: 4px solid var(--clr-accent);
+    }
+
+    /* Diagonal slash detail used as a section accent */
+    .trades-accent-bar {
+      width: 60px;
+      height: 4px;
+      background-color: var(--clr-accent);
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800 bg-white">
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════ -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-white shadow-sm border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3" aria-label="SM Bygg &amp; Måleri">
+        <img src="assets/logo.webp" alt="SM Bygg &amp; Måleri" class="h-9 w-auto" />
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-700 uppercase tracking-wide">
+        <a href="#services" class="hover:text-accent transition-colors">Tjänster</a>
+        
+        <a href="#about"    class="hover:text-accent transition-colors">Om oss</a>
+        <a href="#contact"  class="hover:text-accent transition-colors">Kontakt</a>
+      </nav>
+
+      <a href="tel:+46727429680"
+         class="btn-primary hidden md:inline-flex items-center gap-2 px-5 py-2 text-sm font-bold uppercase tracking-wide">
+        Ring 072-742 96 80
+      </a>
+
+      <label for="mobile-menu-toggle" class="md:hidden cursor-pointer p-2" aria-label="Menu">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </label>
+    </div>
+    <input type="checkbox" id="mobile-menu-toggle" class="hidden peer" />
+    <div class="hidden peer-checked:block md:hidden bg-white border-t border-gray-200 px-6 py-4 space-y-3 text-sm font-semibold uppercase tracking-wide text-gray-700">
+      <a href="#services" class="block hover:text-accent">Tjänster</a>
+      
+      <a href="#about"    class="block hover:text-accent">Om oss</a>
+      <a href="#contact"  class="block hover:text-accent">Kontakt</a>
+      <a href="tel:+46727429680" class="btn-primary inline-block mt-2 px-5 py-2.5 text-sm font-bold text-center">
+        Ring 072-742 96 80
+      </a>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO — bolder than the default; high-contrast overlay
+  ═══════════════════════════════════════════════ -->
+  <section id="hero" class="relative min-h-screen flex items-center text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1675191863404-e1db618d6655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTc1NDd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3Nzk2MTI4NzB8&ixlib=rb-4.1.0&q=80&w=1080" alt="Bygg &amp; Måleri" class="w-full h-full object-cover" />
+      <!-- Stronger overlay than the default — guarantees text legibility on busy work photos -->
+      <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6 pt-24 pb-32 w-full">
+      <!-- Accent bar above eyebrow -->
+      <div class="trades-accent-bar mb-6 animate-fade-up"></div>
+      <p class="text-xs font-bold uppercase tracking-[0.3em] mb-6 text-white animate-fade-up">
+        Bygg &amp; Måleri
+      </p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 animate-fade-up animate-delay-1 max-w-4xl uppercase">
+        Helhetslösningar för ditt hem i Vetlanda
+      </h1>
+      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl leading-relaxed animate-fade-up animate-delay-2">
+        Vi är ett erfaret team som levererar allt från takbyten till renovering och måleri – med hantverksstolthet och nöjda kunder som resultat.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 animate-fade-up animate-delay-2">
+        <a href="tel:+46727429680" class="btn-primary px-8 py-4 text-base font-bold uppercase tracking-wide inline-flex items-center justify-center gap-2 shadow-2xl">
+          Ring oss idag
+        </a>
+        <a href="#services" class="px-8 py-4 text-base font-bold uppercase tracking-wide border-2 border-white/50 hover:bg-white/10 transition-colors text-center">
+          Se våra tjänster
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TRUST STRIP — leads immediately under hero
+  ═══════════════════════════════════════════════ -->
+  
+  <section class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 py-6">
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
+        <div class="flex items-center gap-3"><span class="text-gray-900 font-medium">ROT-avdrag tillgängligt</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       STATS COUNTER — promoted high in trades layout
+  ═══════════════════════════════════════════════ -->
+  
+
+  <!-- ═══════════════════════════════════════════════
+       SERVICES — grid with stronger borders
+  ═══════════════════════════════════════════════ -->
+  <section id="services" class="py-24 md:py-32 bg-white trades-divider">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl mb-16 fade-on-scroll">
+        <div class="trades-accent-bar mb-5"></div>
+        <p class="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-3">Vad vi gör</p>
+        <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-tight uppercase">Våra tjänster</h2>
+      </div>
+      <div class="grid gap-px bg-gray-200 sm:grid-cols-2 lg:grid-cols-3 border-2 border-gray-200">
+        
+        <div class="fade-on-scroll bg-white p-8 md:p-10 hover:bg-gray-50 transition-colors">
+          <div class="text-accent mb-5"><svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14L12 4l9 10M5 14v6h14v-6" /></svg></div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 leading-snug">Takbyte &amp; Takrenovering</h3>
+          <p class="text-gray-600 leading-relaxed">Vi utför kompletta takbyten och reparationer för alla typer av tak. Professionellt arbete som skyddar ditt hem i många år framåt.</p>
+        </div>
+
+        <div class="fade-on-scroll bg-white p-8 md:p-10 hover:bg-gray-50 transition-colors">
+          <div class="text-accent mb-5"><svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l4-4m0 0a2 2 0 102.8-2.8m-2.8 2.8l9-9m0 0l3 3-9 9-3-3zm0 0l3-6 3 3-6 3z" /></svg></div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 leading-snug">Inomhusmålning</h3>
+          <p class="text-gray-600 leading-relaxed">Från enstaka rum till hela huset – vi målar väggar och tak med noggrannhet och rent resultat. Vi lämnar alltid efter oss en ren och fin arbetsplats.</p>
+        </div>
+
+        <div class="fade-on-scroll bg-white p-8 md:p-10 hover:bg-gray-50 transition-colors">
+          <div class="text-accent mb-5"><svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l9-9 9 9M5 10v10h4v-6h6v6h4V10" /></svg></div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 leading-snug">Utvändig Målning</h3>
+          <p class="text-gray-600 leading-relaxed">Fasadmålning som både skyddar och förnyar. Vi använder kvalitetsmaterial och ser till att ditt hus får ett långvarigt och vackert resultat.</p>
+        </div>
+
+        <div class="fade-on-scroll bg-white p-8 md:p-10 hover:bg-gray-50 transition-colors">
+          <div class="text-accent mb-5"><svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4m0 10v4M3 12h4m10 0h4M6 6l2 2m8 8l2 2M6 18l2-2m8-8l2-2" /></svg></div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 leading-snug">Tapetsering</h3>
+          <p class="text-gray-600 leading-relaxed">Professionell tapetsering för alla typer av rum. Vi hanterar allt från förberedelse till färdigt resultat med rak söm och fina detaljer.</p>
+        </div>
+
+        <div class="fade-on-scroll bg-white p-8 md:p-10 hover:bg-gray-50 transition-colors">
+          <div class="text-accent mb-5"><svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l5 7a6 6 0 11-10 0l5-7z" /></svg></div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 leading-snug">Badrumsrenovering</h3>
+          <p class="text-gray-600 leading-relaxed">Kompletta badrumsrenoveringar från golv till tak. Vi sköter kakel, VVS och måleri för ett fräscht och funktionellt badrum.</p>
+        </div>
+
+        <div class="fade-on-scroll bg-white p-8 md:p-10 hover:bg-gray-50 transition-colors">
+          <div class="text-accent mb-5"><svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 012-2h12a2 2 0 012 2v16M9 7h.01M9 11h.01M9 15h.01M13 7h.01M13 11h.01M13 15h.01M9 21v-4h6v4" /></svg></div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 leading-snug">Köksrenovering</h3>
+          <p class="text-gray-600 leading-relaxed">Vi renoverar kök med helhetslösning – golv, väggar, målning och installation. Ett nyrenoverat kök som höjer standarden i ditt hem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       ABOUT + WHY US
+  ═══════════════════════════════════════════════ -->
+  <section id="about" class="py-24 md:py-32 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div class="fade-on-scroll">
+        <div class="trades-accent-bar mb-5"></div>
+        <p class="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-3">Om oss</p>
+        <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-tight mb-6 uppercase">
+          Ett lokalt team med hjärtat i hantverket
+        </h2>
+        <p class="text-lg text-gray-600 leading-relaxed mb-8">SM Bygg &amp; Måleri är ett sammansvetsat team på fem erfarna medarbetare som är djupt rotade i Vetlanda. Vi brinner för hantverk, kvalitet och nöjda kunder. Oavsett om det handlar om takbyte, renovering eller måleri arbetar vi noggrant och effektivt från start till färdigt resultat. Hos oss får du en trygg helhetslösning där yrkesstolthet och kundnöjdhet alltid står i centrum.</p>
+
+        <p class="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4">Varför välja oss</p>
+        <ul class="space-y-4">
+        <li class="flex items-start gap-4">
+          <span class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-accent flex items-center justify-center text-white">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </span>
+          <div>
+            <span class="font-semibold text-gray-900 block">Erfaret femmannalag</span>
+            <span class="text-gray-600 text-sm">Vi arbetar tätt tillsammans utan mellanhänder eller underentreprenörer. Det ger snabb kommunikation, bättre kvalitet och trygghet för dig som kund.</span>
+          </div>
+        </li>
+
+        <li class="flex items-start gap-4">
+          <span class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-accent flex items-center justify-center text-white">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </span>
+          <div>
+            <span class="font-semibold text-gray-900 block">Noggrannhet och rena arbetsplatser</span>
+            <span class="text-gray-600 text-sm">Vi lämnar alltid efter oss snygga och städade ytor. Varje detalj är viktig för oss och vi ser till att jobbet blir gjort på rätt sätt från början.</span>
+          </div>
+        </li>
+
+        <li class="flex items-start gap-4">
+          <span class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-accent flex items-center justify-center text-white">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </span>
+          <div>
+            <span class="font-semibold text-gray-900 block">ROT-avdrag – vi hjälper dig</span>
+            <span class="text-gray-600 text-sm">Vi är godkända för ROT-avdrag och hjälper dig genom processen. Du får klara besked och stöd med pappersarbetet så att du kan dra nytta av skatteavdraget.</span>
+          </div>
+        </li>
+
+        <li class="flex items-start gap-4">
+          <span class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-accent flex items-center justify-center text-white">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </span>
+          <div>
+            <span class="font-semibold text-gray-900 block">Fast pris utan överraskningar</span>
+            <span class="text-gray-600 text-sm">Vi ger dig en tydlig offert med fast pris innan vi börjar. Inga dolda kostnader eller oväntade tillägg – bara ärlig och transparent hantering.</span>
+          </div>
+        </li></ul>
+      </div>
+      <div class="fade-on-scroll"><div class="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-xl">
+              <img src="https://content.app-sources.com/s/391057517624591951/uploads/Bilder/Sm-Bygg-Vetlanda-0679069.png?format=webp" alt="SM Bygg &amp; Måleri" class="w-full h-full object-cover" loading="lazy" />
+            </div></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       GALLERY (conditional)
+  ═══════════════════════════════════════════════ -->
+  
+
+  <!-- ═══════════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════════ -->
+  <section id="contact" class="py-24 md:py-32 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="bg-gray-900 text-white p-10 md:p-16 fade-on-scroll" style="border-radius: 6px;">
+        <div class="max-w-2xl">
+          <div class="trades-accent-bar mb-5"></div>
+          <p class="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-3">Kontakta oss</p>
+          <h2 class="text-3xl md:text-5xl font-black text-white leading-tight mb-6 uppercase">Redo att sätta igång?</h2>
+          <p class="text-lg text-white/85 mb-8 leading-relaxed">Kontakta oss för en kostnadsfri offert. Vi hjälper dig från idé till färdigt resultat.</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="tel:+46727429680" class="btn-primary px-8 py-4 text-base font-bold uppercase tracking-wide inline-flex items-center justify-center gap-2">
+              Ring 072-742 96 80
+            </a>
+            <a href="tel:+46727429680" class="btn-outline border-2 px-8 py-4 rounded-full text-base font-semibold inline-flex items-center justify-center gap-2">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.3a1 1 0 011 .8l1 4.5a1 1 0 01-.3 1L7.5 11a12 12 0 005.5 5.5l1.6-1.5a1 1 0 011-.3l4.5 1a1 1 0 01.8 1V19a2 2 0 01-2 2h-1A17 17 0 013 5z" /></svg>
+         072-742 96 80
+       </a>
+          </div>
+        </div>
+
+        <div class="mt-12 pt-10 border-t border-white/15 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
+          
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-accent mb-1">Ring oss</p>
+        <a href="tel:+46727429680" class="text-gray-900 font-medium hover:text-accent">072-742 96 80</a>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-accent mb-1">Mejla oss</p>
+        <a href="mailto:info@smbyggmaleri.se" class="text-gray-900 font-medium hover:text-accent break-all">info@smbyggmaleri.se</a>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-accent mb-1">Besök oss</p>
+        <p class="text-gray-900 font-medium">Vetlanda</p>
+      </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="bg-gray-950 text-gray-400 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+          <p class="font-bold text-white text-lg uppercase tracking-wide">SM Bygg &amp; Måleri</p>
+          <p class="text-sm mt-1">Bygg &amp; Måleri · Vetlanda</p>
+        </div>
+        <div class="text-sm md:text-right space-y-1">
+          
+          <p class="text-xs text-gray-500">&copy; 2026 SM Bygg &amp; Måleri. Alla rättigheter förbehållna.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -80px 0px' }
+    );
+    document.querySelectorAll('.fade-on-scroll').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
